@@ -1,0 +1,14 @@
+name: Testing React Project
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Node install
+        uses: actions/setup-node@v4
+      - name: install packages
+        run: npm ci
+      - name: run tests
+        run: npm test
