@@ -1,0 +1,47 @@
+name: Linting, Testing, Building the scripts
+on: push
+jobs:
+  Lint-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        run: actions/checkout@v4
+      - name: Install Node.js
+        run: actions/setup-node@v4
+      - name: Install node modules
+        run: npm ci
+      - name: Run the Lints
+        run: npm run lint
+      - name: Output the Lint message
+        run: echo "Linting completed sucessfully"
+      - name: Run the Test files
+        run: npm run test
+      - name: Displaying the Test message
+        run: echo "Testing completed sucessfully"
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        run: actions/checkout@v4
+      - name: Install Node.js
+        run: actions/setup-node@v4
+      - name: Install node modules
+        run: npm ci
+      - name: Build the repository
+        run: npm run build
+      - name: Displaying the Build message
+        run: echo "Build completed sucessfully"
+  Testing:
+    needs: Lint-Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        run: actions/checkout@v4
+      - name: Install Node.js
+        run: actions/setup-node@v4
+      - name: Install node modules
+        run: npm ci
+      - name: Run the Test files
+        run: npm run test
+      - name: Displaying the Test message
+        run: echo "Testing completed sucessfully"
