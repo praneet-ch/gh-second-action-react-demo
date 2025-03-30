@@ -1,0 +1,8 @@
+name: Output information on github function expressions and Context
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the github function expressions and Context
+        run: echo "${{toJSON(github)}}"
