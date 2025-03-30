@@ -12,3 +12,16 @@ jobs:
         run: npm ci
       - name: run tests
         run: npm test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install the Node.js
+        uses: actions/setup-node@v4
+      - name: Install the packages
+        run: npm install
+      - name: Build
+        run: npm build
+      - name: Deploy
+        run: echo "Deploying..."
