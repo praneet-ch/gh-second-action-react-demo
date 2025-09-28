@@ -1,0 +1,33 @@
+name: Deploy to Test
+on: push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get the code
+              uses: actions/checkout@v4
+            - name: node dependencies
+              uses: actions/setup-node@v5
+              with:
+                node-version: 20
+            - name: run the app
+              run: npm ci
+            - name: test the app
+              run: npm test
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: get the code
+              uses: actions/checkout@v4
+            - name: node dependencies
+              uses: actions/setup-node@v5
+              with:
+                node-version: 20
+            - name: run the app
+              run: npm ci
+            - name: test the app
+              run: npm test
+            - name: build the project
+              run: npm build
+            - name: deploy the project
+              run: echo "deploying..."
