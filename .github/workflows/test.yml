@@ -1,0 +1,16 @@
+name: Test Project
+on: push
+jobs:
+  test-react:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v4
+      - name: install node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+      - name: install dependencies
+        run: npm ci
+      - name: run test
+        run: npm test
